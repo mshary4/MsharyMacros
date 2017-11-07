@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="description" translatable="false">هذي الحاسبه تساعد في توقع كمية حرق السعرات اليوميه وكمية الاكل لانزال نسبه الدهون في الجسم.</string>
+    <string name="warning">النتائج غير دقيقه ولكن تعطي توقع جيد في نطاق الكمية تزيد او تنقص بنسبه معينة</string>
+    <string name="Bodyfat">نسبة الدهون</string>
+    <string name="Female">انثى</string>
+    <string name="Height">الطول</string>
+    <string name="Getresults">النتائج</string>
+    <string name="next">التالي</string>
+    <string name="Kg">كغ</string>
+    <string name="WelcomeKey">عدم عرض هذي الصفحه مره آخري</string>
+    <string name="age">العمر</string>
+    <string name="cm">سم</string>
+    <string name="male">ذكر</string>
+    <string name="weight">الوزن</string>
+    <string name="year">سنة</string>
+    <string name="step">خطوة</string>
+    <string name="case1">عمل مكتبي وكثير الجلوس ، لايوجد تمرين </string>
+    <string name="case2">رياضة مكثفة لمدة  20 دقيقة على الأقل 1 إلى 3 مرات في الأسبوع. نمط الحياة مشغول الذي يتطلب منك المشي بشكل متكرر لفترات طويلة</string>
+    <string name="case3">تمرين مكثف لمدة 30 إلى 60 دقيقة على الأقل 3 إلى4 مرات في الأسبوع.</string>
+    <string name="case4">ممارسة مكثفة لمدة 60 دقيقة أو أكثر 5 إلى 7 أيام في الأسبوع</string>
+    <string name="case5">يوم نشط جدا، جدول التدريب يومي مع وظيفة تتطلب مجهود عالي</string>
+    <string name="Activitylevel">" مستوى النشاط "</string>
+    <string name="tipActivityLevel">"اسحب الشريط لااختيار المستوى"</string>
+    <string name="Macrosdetils">"القيم الغذاىية مقسمه الى "</string>
+    <string name="StartOver">البدء من جديد</string>
+    <string name="YouShoudEat">"وعليك أكل "</string>
+    <string name="YourBodyBurn">\"جسمك يحرق \"</string>
+    <string name="Carb">كاربوهيدرات</string>
+    <string name="caldAY">سعرة/يوميا</string>
+    <string name="fat">دهون</string>
+    <string name="protien">بروتين</string>
+    <string name="fatdes">ضع النسبه التقريبيه لنسبه الدهون في جسمك من الصوره</string>
+    <string name="errorEmpty">خانة مطلوبه</string>
+    <string name="errorGender">يجب اختيار الجنس</string>
+    <string name="title_activity_fatinput"></string>
+    <string name="NonFat">"لا آعرف نسبه الدهون في جسمي "</string>
+
+</resources>
