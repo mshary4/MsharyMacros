@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="msharytech.msharymacros">
+    package="com.msharytech.msharymacros">
 
     <supports-screens android:normalScreens="true" />
     <supports-screens android:largeScreens="true" />
