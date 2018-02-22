@@ -58,7 +58,6 @@ public class Results extends AppCompatActivity {
         Log.e("FINAL", String.valueOf(calculate.getCarb()));
         Log.e("FINAL", String.valueOf(calculate.getFat()));
         Log.e("FINAL", String.valueOf(calculate.getProtien()));
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

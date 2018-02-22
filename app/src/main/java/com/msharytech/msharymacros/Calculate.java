@@ -135,7 +135,7 @@ public Calculate Macros (User user){
                 break;
             case 2:
                 BMR = BMR * 1.375;
-
+                break;
             case 3:
                 BMR = BMR * 1.55;
                 break;

@@ -16,10 +16,10 @@
     <string name="year">سنة</string>
     <string name="step">خطوة</string>
     <string name="case1">عمل مكتبي وكثير الجلوس ، لايوجد تمرين </string>
-    <string name="case2">رياضة مكثفة لمدة  20 دقيقة على الأقل 1 إلى 3 مرات في الأسبوع. نمط الحياة مشغول الذي يتطلب منك المشي بشكل متكرر لفترات طويلة</string>
-    <string name="case3">تمرين مكثف لمدة 30 إلى 60 دقيقة على الأقل 3 إلى4 مرات في الأسبوع.</string>
-    <string name="case4">ممارسة مكثفة لمدة 60 دقيقة أو أكثر 5 إلى 7 أيام في الأسبوع</string>
-    <string name="case5">يوم نشط جدا، جدول التدريب يومي مع وظيفة تتطلب مجهود عالي</string>
+    <string name="case2"> رياضة خفيفة ، 1–3 أيام في الأسبوع</string>
+    <string name="case3">التمرين المكثف ، 3–5 أيام في الأسبوع</string>
+    <string name="case4">التمرين الصعب جدا ، 6–7 أيام في الأسبوع</string>
+    <string name="case5">رياضة قويه ووظيفه تتطلب جهد بدني ، او تمرين مرتين يوميا</string>
     <string name="Activitylevel">" مستوى النشاط "</string>
     <string name="tipActivityLevel">"اسحب الشريط لااختيار المستوى"</string>
     <string name="Macrosdetils">"القيم الغذاىية مقسمه الى "</string>

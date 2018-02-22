@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.msharytech.msharymacros">
 
     <supports-screens android:normalScreens="true" />
     <supports-screens android:largeScreens="true" />
-    <supports-screens android:smallScreens="true"></supports-screens>
+    <supports-screens android:smallScreens="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/appicon"
@@ -12,11 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Results" />
-        <activity android:name=".Datainput"/>
-        <activity android:name=".Welcome"
+        <activity android:name=".Datainput" />
+        <activity
+            android:name=".Welcome"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -24,7 +27,8 @@
         <activity
             android:name=".fatinput"
             android:label="@string/title_activity_fatinput"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ChooserActivity"></activity>
     </application>
 
 </manifest>

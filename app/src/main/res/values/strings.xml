@@ -14,11 +14,11 @@
     <string name="Bodyfat">Body fat</string>
     <string name="Getresults">Get results</string>
     <string name="step">step</string>
-    <string name="case1">Sedentary.  Little to no exercise</string>
-    <string name="case2">Intensive exercise for at least 20 minutes 1 to 3 times per week.\n a busy life style that requires you to walk frequently for long periods,this level for you</string>
-    <string name="case3">Intensive exercise for at least 30 to 60 minutes 3 to 4 times per week.</string>
-    <string name="case4">ntensive exercise for 60 minutes or greater 5 to 7 days per week\</string>
-    <string name="case5">Exceedingly active, athlete with an almost unstoppable training schedule with multiple training sessions throughout the day or a very demanding job</string>
+    <string name="case1">All day sitting. no exercise</string>
+    <string name="case2">light exercise or sports 1–3 days per week</string>
+    <string name="case3">Intensive exercise 3–5 days per week </string>
+    <string name="case4">hard exercise 6–7 days per week </string>
+    <string name="case5">very hard exercise or sports and a physical job or 2x training </string>
     <string name="Activitylevel">Activity Level</string>
     <string name="tipActivityLevel">move the bar to choise avtivity level thats fit you</string>
     <string name="YourBodyBurn">your Body Burn</string>

@@ -32,6 +32,7 @@ public class movmentLevel extends AppCompatActivity {
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
         Button buttonDone = (Button) findViewById(R.id.buttonResults);
         SeekBar seekBar = (SeekBar) findViewById(R.id.seekBarActivtyLevel);
+        final TextView movmentLevel = (TextView) findViewById(R.id.textViewMovmentLevel);
         //if(CurrentLanguage.equals("ar"))
             //seekBar.setRotation(180);
         final TextView ActicityLevelDes= (TextView) findViewById(R.id.textViewActivityDes);
@@ -65,26 +66,31 @@ public class movmentLevel extends AppCompatActivity {
                 if(progress<14){
                    seekBar.setProgress(0);
                     user.setActivityLevel(1);
+                    movmentLevel.setText("1");
                     ActicityLevelDes.setText(getActivityString(1));
                 }
                 else if(progress>=15 && progress<35){
                    seekBar.setProgress(24);
                     user.setActivityLevel(2);
+                    movmentLevel.setText("2");
                     ActicityLevelDes.setText(getActivityString(2));
                 }
                else if(progress>=36 &&progress<=60){
                     seekBar.setProgress(50);
                     user.setActivityLevel(3);
+                    movmentLevel.setText("3");
                     ActicityLevelDes.setText(getActivityString(3));
                }
                 else if(progress>=61 &&progress<78){
                     seekBar.setProgress(75);
                     user.setActivityLevel(4);
+                    movmentLevel.setText("4");
                     ActicityLevelDes.setText(getActivityString(4));
                 }
                else if(progress>=79){
                     seekBar.setProgress(100);
                     user.setActivityLevel(5);
+                    movmentLevel.setText("5");
                     ActicityLevelDes.setText(getActivityString(5));
                }
             }
