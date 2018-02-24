@@ -4,8 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MsharyMacros.iml" filepath="$PROJECT_DIR$/MsharyMacros.iml" />
       <module fileurl="file://C:\Users\Mshar\Documents\AndroidStudioProjects\MsharyMacros\MsharyMacros.iml" filepath="C:\Users\Mshar\Documents\AndroidStudioProjects\MsharyMacros\MsharyMacros.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MsharyMacros.iml" filepath="$PROJECT_DIR$/MsharyMacros.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:\Users\Mshar\Documents\AndroidStudioProjects\MsharyMacros\app\app.iml" filepath="C:\Users\Mshar\Documents\AndroidStudioProjects\MsharyMacros\app\app.iml" />
     </modules>

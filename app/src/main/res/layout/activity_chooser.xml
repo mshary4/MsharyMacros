@@ -6,35 +6,56 @@
     android:layout_height="match_parent"
     tools:context="com.msharytech.msharymacros.ChooserActivity">
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="162dp"
-        android:layout_height="147dp"
-        app:srcCompat="@android:drawable/ic_menu_recent_history"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="272dp" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/tool_bar"
+        android:layout_marginBottom="75dp"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ActionBar"
+        app:layout_constraintBottom_toTopOf="@+id/imageButtonCalc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="134dp"
-        android:layout_height="96dp"
-        app:srcCompat="@android:drawable/ic_menu_recent_history"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="91dp" />
+        android:id="@+id/imageButtonCalc"
+        android:layout_width="150"
+        android:layout_height="240"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginStart="16dp"
+        android:elevation="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton2"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
+        app:srcCompat="@mipmap/calculator" />
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="155dp"
-        android:layout_height="151dp"
-        app:srcCompat="@android:drawable/ic_menu_recent_history"
-        tools:layout_editor_absoluteX="213dp"
-        tools:layout_editor_absoluteY="272dp" />
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="116dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonCalc"
+        app:srcCompat="@android:drawable/ic_dialog_info" />
 
     <ImageButton
         android:id="@+id/imageButton4"
-        android:layout_width="182dp"
-        android:layout_height="109dp"
-        app:srcCompat="@android:drawable/ic_menu_recent_history"
-        tools:layout_editor_absoluteX="186dp"
-        tools:layout_editor_absoluteY="93dp" />
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="150"
+        android:layout_height="240"
+        android:layout_marginEnd="21dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButtonCalc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonCalc"
+        app:layout_constraintTop_toTopOf="@+id/imageButtonCalc"
+        app:srcCompat="@android:drawable/ic_menu_recent_history" />
 </android.support.constraint.ConstraintLayout>
