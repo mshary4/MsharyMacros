@@ -1,4 +1,6 @@
 package com.msharytech.msharymacros;
+import android.content.Context;
+
 import com.google.android.gms.ads.InterstitialAd;
 
 /**
@@ -9,16 +11,26 @@ public class App {
     public static boolean Lb=false;
     public static boolean bodyfat=false;
     InterstitialAd mInterstitialAd;
+    public static Context mContext;
 
 
 
+    public static Context getContext() {
 
+        return mContext;
+    }
+
+    public static void setContext(Context context){
+        mContext=context;
+    }
     public App() {
     }
 
     public static boolean isItLB(){
         return Lb;
     }
+
+
 
     public static boolean isBodyfat(){
         return bodyfat;

@@ -7,4 +7,11 @@
     <dimen name="iconEditText">30dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="tool_bar">56dp</dimen>
+    <dimen name="dimen_10dp">10dp</dimen>
+    <dimen name="dim_50dp">50dp</dimen>
+    <dimen name="dim_25dp">25dp</dimen>
+    <dimen name="dim_150">150dp</dimen>
+    <dimen name="dim_330">330dp</dimen>
+    <dimen name="dim_350">350dp</dimen>
+    <dimen name="dim_70">70dp</dimen>
 </resources>

@@ -20,15 +20,16 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowNoTitle">false</item>
     </style>
-    <style name="Theme.AppCompat.NoActionBar">
-    </style>
 
-    <style name="ActionBar"
-        parent="Base.ThemeOverlay.AppCompat.ActionBar">
+    <style name="Theme.AppCompat.NoActionBar"></style>
+
+    <style name="ActionBar" parent="Base.ThemeOverlay.AppCompat.ActionBar">
         <item name="background">@color/White</item>
         <item name="titleTextStyle">@color/White</item>
     </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
 </resources>

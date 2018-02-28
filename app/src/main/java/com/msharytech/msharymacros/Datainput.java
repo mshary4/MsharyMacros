@@ -6,9 +6,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Layout;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,8 +25,6 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
-import java.io.Serializable;
-
 
 /**
  * Created by Mshary on 4/5/17.
@@ -39,6 +35,11 @@ public class Datainput extends AppCompatActivity {
     TextInputLayout layoutFat;
     public static InterstitialAd mInterstitialAd;
     boolean flagch = false;
+    EditText editTextAge, editTextWeight, editTextHight, editTextBodayfat;
+    RadioButton radioButtonF, radioButtonM;
+    CheckBox checkBoxNonFat;
+    ImageView FatPic;
+    TextView per;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +47,10 @@ public class Datainput extends AppCompatActivity {
         setContentView(R.layout.activity_data_input);
         Animation emerge = AnimationUtils.loadAnimation(this, R.anim.emerge);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-     setSupportActionBar(myToolbar);
+        setSupportActionBar(myToolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         layoutFat = (TextInputLayout) findViewById(R.id.input_layout_bodyfat);
         mInterstitialAd = new InterstitialAd(this);
@@ -56,15 +58,15 @@ public class Datainput extends AppCompatActivity {
                 "ca-app-pub-8360364255923836~4430218506");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
         Button buttonResults = (Button) findViewById(R.id.buttonResults);
-        final EditText editTextAge = (EditText) findViewById(R.id.input_age);
-        final EditText editTextWeight = (EditText) findViewById(R.id.input_weight);
-        final EditText editTextHight = (EditText) findViewById(R.id.input_Height);
-        final RadioButton radioButtonF = (RadioButton) findViewById(R.id.radioButtonFemale);
-        final RadioButton radioButtonM = (RadioButton) findViewById(R.id.radioButtonMale);
-        final EditText editTextBodayfat = (EditText) findViewById(R.id.input_bodyfat);
-        final CheckBox checkBoxNonFat = (CheckBox) findViewById(R.id.checkBoxnNonFat);
-        final ImageView FatPic = (ImageView) findViewById(R.id.imageView4);
-        final TextView per = (TextView) findViewById(R.id.textView3);
+        editTextAge = (EditText) findViewById(R.id.input_age);
+        editTextWeight = (EditText) findViewById(R.id.input_weight);
+        editTextHight = (EditText) findViewById(R.id.input_Height);
+        radioButtonF = (RadioButton) findViewById(R.id.radioButtonFemale);
+        radioButtonM = (RadioButton) findViewById(R.id.radioButtonMale);
+        editTextBodayfat = (EditText) findViewById(R.id.input_bodyfat);
+        checkBoxNonFat = (CheckBox) findViewById(R.id.checkBoxnNonFat);
+        FatPic = (ImageView) findViewById(R.id.imageView4);
+        per = (TextView) findViewById(R.id.textView3);
 
 
         checkBoxNonFat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -118,9 +120,9 @@ public class Datainput extends AppCompatActivity {
 
                 if (!flagch) {
                     if (radioButtonF.isChecked()) {
-                        user.setGender('F');
+                        user.setGender("F");
                     } else {
-                        user.setGender('M');
+                        user.setGender("M");
                     }
                     user.setAge(Double.parseDouble(editTextAge.getText().toString()));
                     user.setWeight(Double.parseDouble(editTextWeight.getText().toString()));
@@ -155,21 +157,47 @@ public class Datainput extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i = new Intent(Datainput.this, Welcome.class);
+        Intent i = new Intent(Datainput.this, ChooserActivity.class);
         startActivity(i);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+           onBackPressed();
+        }
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                // User chose the "Settings" item, show the app settings UI...
+            case R.id.action_history:
+                User user = User.getuser();
+                if(user==null)
+                    return false;
+
+                editTextAge.setText(String.valueOf(user.getAge()));
+                editTextWeight.setText(String.valueOf(user.getWeight()));
+                editTextBodayfat.setText(String.valueOf(user.getBodyfat()));
+                editTextHight.setText(String.valueOf(user.getHeight()));
+
+                String gender = user.getGender();
+                if (gender.equals("M") || gender.equals("m")) {
+                    radioButtonM.toggle();
+                } else if (gender.equals("F") || gender.equals("f")) {
+                    radioButtonF.toggle();
+                }
+                editTextBodayfat.setVisibility(View.VISIBLE);
+                layoutFat.setVisibility(View.VISIBLE);
+                FatPic.setVisibility(View.VISIBLE);
+                per.setVisibility(View.VISIBLE);
+                checkBoxNonFat.setChecked(false);
+                DoneFat = true;
                 return true;
+
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.

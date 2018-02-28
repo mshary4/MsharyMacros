@@ -2,15 +2,17 @@ package com.msharytech.msharymacros;
 
 import android.util.Log;
 
+import java.util.UUID;
+
 /**
  * Created by Mshary on 7/9/17.
  */
 
-public class Calculate{
+public class Calculate {
     private User user;
-    private boolean isItLb=new App().isItLB();
-    private double protien,carb,fat,calorieIntake;
-    private boolean Complete=false;
+    private boolean isItLb = new App().isItLB();
+    private double protien, carb, fat, calorieIntake;
+    private boolean Complete = false;
 
     public Calculate() {
     }
@@ -27,39 +29,38 @@ public class Calculate{
     }
 
 
-
-public Calculate Macros (User user){
-    Calculate calculate = new Calculate(user);
-    double Cal=calculate.getCaloriesintake();
-    Log.e("FINAL",String.valueOf(Cal));
-    double[] p=calculate.protein();
-    double[]f=calculate.fat(Cal);
-    double[] c=calculate.carb(f[1],Cal,p);
-    calculate.setCarb(c[0]);
-    calculate.setFat(f[0]);
-    calculate.setProtien(p[0]);
-    calculate.setComplete(true);
-
-    return calculate;
-}
-
+    public Result Macros(User user) {
+        this.user = user;
+        Result result = new Result();
+        double Cal = getCaloriesintake();
+        Log.e("FINAL", String.valueOf(Cal));
+        double[] p = protein();
+        double[] f = fat(Cal);
+        double[] c = carb(f[1], Cal, p);
+        result.setCarb((int) c[0]);
+        result.setFat((int) f[0]);
+        result.setProtein((int) p[0]);
+        result.setIntake((int) getCaloriesintake());
+        result.setCalBurned((int) DailyCaloriesBurned());
+        result.setId(UUID.randomUUID().toString());
+        return result;
+    }
 
 
     private double[] protein() {
-        //// TODO: 7/9/17 add Calc without bodyfat
-        double weight=user.leanBodyMass(); // get user weight
-        char Gender=user.getGender(); // get user gender
-        if(!isItLb) weight=user.leanBodyMassINlb(); // Convert user Kg in LB
+        double weight = user.leanBodyMass(); // get user weight
+        String gender = user.getGender(); // get user gender
+        if (!isItLb) weight = user.leanBodyMassINlb(); // Convert user Kg in LB
         double[] protein = new double[2];
-        if ( Gender== 'M' || Gender == 'm') {
-            protein[0] = Math.floor(weight* 1.25); // calculate cal for protein
+        if (gender.equals("M") || gender.equals("m")) {
+            protein[0] = Math.floor(weight * 1.25); // calculate cal for protein
             protein[1] = Math.floor(protein[0] * 4); //calculate Gram of protein
-        } else if (Gender == 'F' || Gender == 'f') {
-            protein[0] =Math.round(weight*1.3); // calculate cal for protein
+        } else if (gender.equals("F") || gender.equals("f")) {
+            protein[0] = Math.round(weight * 1.3); // calculate cal for protein
             protein[1] = Math.round(protein[0] * 4); //calculate Gram of protein
         }
 
-    return  protein;
+        return protein;
     }
 
 
@@ -83,8 +84,8 @@ public Calculate Macros (User user){
 
     }
 
-    public double getCaloriesintake(){
-       return 0.75*DailyCaloriesBurned();
+    private double getCaloriesintake() {
+        return 0.75 * DailyCaloriesBurned();
     }
 
     public double getProtien() {
@@ -112,7 +113,6 @@ public Calculate Macros (User user){
     }
 
 
-
     private void setCalorieIntake(double calorieIntake) {
         this.calorieIntake = calorieIntake;
     }
@@ -125,7 +125,7 @@ public Calculate Macros (User user){
         return Complete;
     }
 
-    public double DailyCaloriesBurned(){
+    private double DailyCaloriesBurned() {
         double BMR = user.BMR();
         switch (user.getActivityLevel()) {
             case 0:

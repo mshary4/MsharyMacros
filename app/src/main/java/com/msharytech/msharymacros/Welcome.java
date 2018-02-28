@@ -1,4 +1,5 @@
 package com.msharytech.msharymacros;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -12,13 +13,14 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
 public class Welcome extends AppCompatActivity {
-
+    public static Context mainContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         TextView state;
         Button done;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        App.setContext(getApplicationContext());
 
 
         final CheckBox checkBoxAgian = (CheckBox) findViewById(R.id.checkBoxAgian);
@@ -28,7 +30,7 @@ public class Welcome extends AppCompatActivity {
 
         if (Visted(WelcomeVisted)) {
             Intent intent = new Intent();
-            intent.setClass(Welcome.this, Datainput.class);
+            intent.setClass(Welcome.this, ChooserActivity.class);
             startActivity(intent);
 
         }
@@ -51,7 +53,7 @@ public class Welcome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setClass(Welcome.this, Datainput.class);
+                intent.setClass(Welcome.this, ChooserActivity.class);
                 startActivity(intent);
 
 

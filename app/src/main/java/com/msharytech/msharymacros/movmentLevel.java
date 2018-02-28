@@ -28,7 +28,7 @@ public class movmentLevel extends AppCompatActivity {
 
         setContentView(R.layout.activity_movment_level);
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-8360364255923836/5348548506");
+        mInterstitialAd.setAdUnitId("ca-app-pub-8360364255923836/5348548506"); //fixme add ads
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
         Button buttonDone = (Button) findViewById(R.id.buttonResults);
         SeekBar seekBar = (SeekBar) findViewById(R.id.seekBarActivtyLevel);

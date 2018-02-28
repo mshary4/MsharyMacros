@@ -24,7 +24,7 @@
     <string name="YourBodyBurn">your Body Burn</string>
     <string name="YouShoudEat">You Should Eat</string>
     <string name="Macrosdetils">and your Calories divides to Macros below</string>
-    <string name="StartOver">Start Over</string>
+    <string name="StartOver">Back to menu</string>
     <string name="caldAY">Calories/day</string>
     <string name="Carb">carbohydrates</string>
     <string name="fat">Fat</string>
@@ -36,6 +36,8 @@
     <string name="fatdes">Estimed your fat perecntger from the picture</string>
     <string name="NonFat">i Dont know my fat percentage</string>
     <string name="action_settings">settings</string>
+    <string name="title_activity_history">HistoryActivity</string>
+    <string name="title_activity_info">InfoActivity</string>
 
 
 </resources>

@@ -4,16 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.msharytech.msharymacros.ChooserActivity">
+    tools:context="com.msharytech.msharymacros.ChooserActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/my_toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/tool_bar"-->
+        <!--android:layout_marginBottom="75dp"-->
+        <!--android:background="?attr/colorPrimary"-->
+        <!--android:theme="@style/ActionBar"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/imageButtonCalc"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/tool_bar"
-        android:layout_marginBottom="75dp"
+        android:layout_marginBottom="1dp"
         android:background="?attr/colorPrimary"
+        android:elevation="4dp"
         android:theme="@style/ActionBar"
-        app:layout_constraintBottom_toTopOf="@+id/imageButtonCalc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,41 +35,39 @@
 
     <ImageButton
         android:id="@+id/imageButtonCalc"
-        android:layout_width="150"
-        android:layout_height="240"
-        android:layout_marginBottom="8dp"
+        android:layout_width="@dimen/dim_150"
+        android:layout_height="@dimen/dim_330"
+        android:layout_marginBottom="20dp"
         android:layout_marginEnd="47dp"
         android:layout_marginStart="16dp"
-        android:elevation="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton2"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButtonInfo"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonHistory"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
+        app:layout_constraintVertical_bias="0.746"
         app:srcCompat="@mipmap/calculator" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
-        style="@style/Widget.AppCompat.ImageButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="116dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
+        android:id="@+id/imageButtonInfo"
+        android:layout_width="@dimen/dim_350"
+        android:layout_height="70dp"
+        android:layout_marginBottom="32dp"
+        android:elevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButtonCalc"
-        app:srcCompat="@android:drawable/ic_dialog_info" />
+        app:srcCompat="@android:drawable/ic_dialog_info"
+        tools:layout_editor_absoluteX="17dp" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
-        style="@style/Widget.AppCompat.ImageButton"
-        android:layout_width="150"
-        android:layout_height="240"
+        android:id="@+id/imageButtonHistory"
+        android:layout_width="@dimen/dim_150"
+        android:layout_height="@dimen/dim_330"
         android:layout_marginEnd="21dp"
+        android:elevation="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageButtonCalc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageButtonCalc"
         app:layout_constraintTop_toTopOf="@+id/imageButtonCalc"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@android:drawable/ic_menu_recent_history" />
 </android.support.constraint.ConstraintLayout>
