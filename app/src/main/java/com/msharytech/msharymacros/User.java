@@ -124,10 +124,17 @@ public class User extends RealmObject implements Serializable {
     }
 
     public static User getuser() {
-        User realmQuery = RealmManager.getInstance().getRealmInstance()
-                .where(User.class).contains("id", "1").findAll().last();
-        return realmQuery;
+        RealmQuery realmQuery= RealmManager.getInstance().getRealmInstance()
+                .where(User.class).contains("id", "1");
+        try {
+            if(realmQuery!=null)
+                return (User) realmQuery.findAll().last();
+        }catch (Exception e){
+            return null;
+        }
 
+
+        return null;
 
     }
 

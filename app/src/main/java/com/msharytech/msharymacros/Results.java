@@ -19,7 +19,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import static com.msharytech.msharymacros.Utils.getEmojiByUnicode;
-import static com.msharytech.msharymacros.movmentLevel.mInterstitialAd;
+
 
 
 public class Results extends AppCompatActivity {
@@ -31,11 +31,7 @@ public class Results extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
+
         textviewCarb = (TextView) findViewById(R.id.textViewCarb);
         total = (TextView) findViewById(R.id.textViewTotalCal);
         textviewrotien = (TextView) findViewById(R.id.textViewProtien);

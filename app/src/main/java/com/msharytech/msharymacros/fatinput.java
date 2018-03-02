@@ -19,7 +19,7 @@ import com.google.android.gms.ads.InterstitialAd;
 import java.io.Serializable;
 
 
-import static com.msharytech.msharymacros.movmentLevel.mInterstitialAd;
+
 
 public class fatinput extends AppCompatActivity {
     User user = new User();

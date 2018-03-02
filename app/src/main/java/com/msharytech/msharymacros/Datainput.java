@@ -1,6 +1,7 @@
 package com.msharytech.msharymacros;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
@@ -24,6 +25,13 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 
 /**
@@ -41,10 +49,13 @@ public class Datainput extends AppCompatActivity {
     ImageView FatPic;
     TextView per;
 
+    public static RewardedVideoAd mRewardedVideoAd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_input);
+        mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this);
         Animation emerge = AnimationUtils.loadAnimation(this, R.anim.emerge);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -54,9 +65,7 @@ public class Datainput extends AppCompatActivity {
 
         layoutFat = (TextInputLayout) findViewById(R.id.input_layout_bodyfat);
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("\n" +
-                "ca-app-pub-8360364255923836~4430218506");
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
         Button buttonResults = (Button) findViewById(R.id.buttonResults);
         editTextAge = (EditText) findViewById(R.id.input_age);
         editTextWeight = (EditText) findViewById(R.id.input_weight);
@@ -133,11 +142,13 @@ public class Datainput extends AppCompatActivity {
                         if (!editTextBodayfat.getText().toString().isEmpty()) {
                             user.setBodyfat(Double.parseDouble(editTextBodayfat.getText().toString()));
                             Intent i = new Intent(Datainput.this, movmentLevel.class);
+                            loadRewardedVideoAd(user);
                             i.putExtra("user", user);
                             startActivity(i);
                         }
                     } else {
                         Intent i = new Intent(Datainput.this, fatinput.class);
+                        loadRewardedVideoAd(user);
                         i.putExtra("user", user);
                         if (radioButtonF.isChecked()) {
                             i.putExtra("G", 'F');
@@ -171,12 +182,12 @@ public class Datainput extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-           onBackPressed();
+            onBackPressed();
         }
         switch (item.getItemId()) {
             case R.id.action_history:
                 User user = User.getuser();
-                if(user==null)
+                if (user == null)
                     return false;
 
                 editTextAge.setText(String.valueOf(user.getAge()));
@@ -205,4 +216,30 @@ public class Datainput extends AppCompatActivity {
 
         }
     }
+
+    private void loadRewardedVideoAd(User user) {
+        int g = 1;
+        if (user.getGender().equals("M") || user.getGender().equals("m")) {
+            g = AdRequest.GENDER_MALE;
+        } else if (user.getGender().equals("F") || user.getGender().equals("f")) {
+            g = AdRequest.GENDER_FEMALE;
+        }
+        //test
+        //ca-app-pub-3940256099942544/5224354917
+        // mine ca-app-pub-8360364255923836/2358165066
+        mRewardedVideoAd.loadAd("ca-app-pub-8360364255923836/2358165066",
+                new AdRequest.Builder().setGender(g).setBirthday(new GregorianCalendar((int) (getYear() - user.getAge()), 1, 1).getTime()).build());
+    }
+
+
+    private int getYear() {
+        return Calendar.getInstance().get(Calendar.YEAR);
+
+    }
+
+
+
+
+
+
 }

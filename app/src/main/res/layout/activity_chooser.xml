@@ -20,6 +20,22 @@
         <!--app:layout_constraintTop_toTopOf="parent"-->
         <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
 
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="@string/app_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
@@ -51,9 +67,10 @@
     <ImageButton
         android:id="@+id/imageButtonInfo"
         android:layout_width="@dimen/dim_350"
-        android:layout_height="70dp"
+        android:layout_height="1dp"
         android:layout_marginBottom="32dp"
         android:elevation="5dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@android:drawable/ic_dialog_info"
         tools:layout_editor_absoluteX="17dp" />
@@ -68,6 +85,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageButtonCalc"
         app:layout_constraintTop_toTopOf="@+id/imageButtonCalc"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/ic_menu_recent_history" />
 </android.support.constraint.ConstraintLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="description" translatable="false">هذي الحاسبه تساعد في توقع كمية حرق السعرات اليوميه وكمية الاكل لانزال نسبه الدهون في الجسم.</string>
+    <string name="description">هذه الآلة الحاسبة على أساس بحث على العديد من مستخدمين الابل واتش ، وهذا هو الأكثر دقة يمكنني الحصول على السعرات الحرارية التي يحرقها جسمك يوميا ويعطي السعرات الحرارية لانقاص وزنك في الطريق الصحيح.</string>
     <string name="warning">النتائج غير دقيقه ولكن تعطي توقع جيد في نطاق الكمية تزيد او تنقص بنسبه معينة</string>
     <string name="Bodyfat">نسبة الدهون</string>
     <string name="Female">انثى</string>
@@ -33,7 +33,8 @@
     <string name="fatdes">ضع النسبه التقريبيه لنسبه الدهون في جسمك من الصوره</string>
     <string name="errorEmpty">خانة مطلوبه</string>
     <string name="errorGender">يجب اختيار الجنس</string>
-    <string name="title_activity_fatinput"></string>
     <string name="NonFat">"لا آعرف نسبه الدهون في جسمي "</string>
+    <string name="later">لاحقا</string>
+    <string name="action_settings">الاعدادات</string>
 
 </resources>

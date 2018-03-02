@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">Macros Calculator</string>
-    <string name="description">this calculator helps estimate how much calories your body burn per day and gives calories and macros you have to eat lose weight.</string>
+    <string name="description">this calculator based on research on multiple users with apple watches , this is the most accurate i can get calories your body burn per day and gives calories and macros you have to eat lose weight in right way.</string>
     <string name="warning">the result not accurate but this is the range of your macros and calories</string>
     <string name="WelcomeKey">never show this page again</string>
     <string name="Female">Female</string>
@@ -36,8 +36,9 @@
     <string name="fatdes">Estimed your fat perecntger from the picture</string>
     <string name="NonFat">i Dont know my fat percentage</string>
     <string name="action_settings">settings</string>
-    <string name="title_activity_history">HistoryActivity</string>
-    <string name="title_activity_info">InfoActivity</string>
+    <string name="title_activity_history" translatable="false">HistoryActivity</string>
+    <string name="title_activity_info" translatable="false">InfoActivity</string>
+    <string name="later">later</string>
 
 
 </resources>

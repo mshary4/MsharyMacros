@@ -14,6 +14,8 @@ import com.google.android.gms.ads.InterstitialAd;
 
 public class Welcome extends AppCompatActivity {
     public static Context mainContext;
+    public static SharedPreferences sharedPreferences;
+    public static SharedPreferences.Editor EditShared;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         TextView state;
@@ -25,10 +27,10 @@ public class Welcome extends AppCompatActivity {
 
         final CheckBox checkBoxAgian = (CheckBox) findViewById(R.id.checkBoxAgian);
         done = (Button) findViewById(R.id.doneButton);
-        SharedPreferences WelcomeVisted = getPreferences(MODE_PRIVATE);
-        final SharedPreferences.Editor EditShared = WelcomeVisted.edit();
+         sharedPreferences = getPreferences(MODE_PRIVATE);
+          EditShared = sharedPreferences.edit();
 
-        if (Visted(WelcomeVisted)) {
+        if (Visted()) {
             Intent intent = new Intent();
             intent.setClass(Welcome.this, ChooserActivity.class);
             startActivity(intent);
@@ -69,8 +71,8 @@ public class Welcome extends AppCompatActivity {
 
 
 
-    public boolean Visted(SharedPreferences WelcomeVisted ){
-        return WelcomeVisted.getBoolean("visted",false);
+    public boolean Visted(){
+        return sharedPreferences.getBoolean("visted",false);
     }
 
 
