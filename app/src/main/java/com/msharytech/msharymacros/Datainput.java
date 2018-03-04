@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -187,8 +188,10 @@ public class Datainput extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_history:
                 User user = User.getuser();
-                if (user == null)
+                if (user == null) {
+                    Toast.makeText(Datainput.this, "No data found", Toast.LENGTH_SHORT).show();
                     return false;
+                }
 
                 editTextAge.setText(String.valueOf(user.getAge()));
                 editTextWeight.setText(String.valueOf(user.getWeight()));

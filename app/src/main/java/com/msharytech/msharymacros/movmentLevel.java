@@ -172,7 +172,9 @@ public class movmentLevel extends AppCompatActivity implements RewardedVideoAdLi
 
     @Override
     public void onRewardedVideoAdClosed() {
-
+        Intent i = new Intent(movmentLevel.this, Results.class);
+        i.putExtra("user", (Serializable) user);
+        startActivity(i);
     }
 
     @Override
@@ -187,7 +189,9 @@ public class movmentLevel extends AppCompatActivity implements RewardedVideoAdLi
 
     @Override
     public void onRewardedVideoAdLeftApplication() {
-
+        Intent i = new Intent(movmentLevel.this, Results.class);
+        i.putExtra("user", (Serializable) user);
+        startActivity(i);
     }
 
     @Override

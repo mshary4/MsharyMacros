@@ -1,5 +1,7 @@
 package com.msharytech.msharymacros;
 
+import android.widget.Toast;
+
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.UUID;
@@ -130,6 +132,7 @@ public class User extends RealmObject implements Serializable {
             if(realmQuery!=null)
                 return (User) realmQuery.findAll().last();
         }catch (Exception e){
+            Toast.makeText(App.getContext(), "No data found", Toast.LENGTH_SHORT);
             return null;
         }
 
