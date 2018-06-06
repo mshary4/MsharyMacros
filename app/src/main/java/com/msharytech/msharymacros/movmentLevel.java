@@ -199,6 +199,11 @@ public class movmentLevel extends AppCompatActivity implements RewardedVideoAdLi
 
     }
 
+    @Override
+    public void onRewardedVideoCompleted() {
+
+    }
+
     public int getReward() {
         return Welcome.sharedPreferences.getInt("results", 0);
     }

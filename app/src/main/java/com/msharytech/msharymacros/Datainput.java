@@ -1,14 +1,13 @@
 package com.msharytech.msharymacros;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,12 +26,12 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
-import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
+import belka.us.androidtoggleswitch.widgets.ToggleSwitch;
 
 
 /**
@@ -68,6 +67,7 @@ public class Datainput extends AppCompatActivity {
         mInterstitialAd = new InterstitialAd(this);
 
         Button buttonResults = (Button) findViewById(R.id.buttonResults);
+        final ToggleSwitch systemUnit = (ToggleSwitch) findViewById(R.id.systemUnitSwitch);
         editTextAge = (EditText) findViewById(R.id.input_age);
         editTextWeight = (EditText) findViewById(R.id.input_weight);
         editTextHight = (EditText) findViewById(R.id.input_Height);
@@ -101,6 +101,8 @@ public class Datainput extends AppCompatActivity {
         buttonResults.setOnClickListener(new View.OnClickListener() {
 
 
+            public static final String TAG = "TAG";
+
             @Override
             public void onClick(View v) {
                 User user = new User();
@@ -124,6 +126,8 @@ public class Datainput extends AppCompatActivity {
                     }
                 }
                 if (!radioButtonF.isChecked() && !radioButtonM.isChecked()) {
+                    int c=systemUnit.getCheckedTogglePosition();
+                    Log.e(TAG, "SWICH: "+String.valueOf(c));
                     Toast.makeText(Datainput.this, getString(R.string.errorGender), Toast.LENGTH_LONG).show();
                     flagch = true;
                 }
@@ -219,6 +223,9 @@ public class Datainput extends AppCompatActivity {
 
         }
     }
+
+
+
 
     private void loadRewardedVideoAd(User user) {
         int g = 1;
