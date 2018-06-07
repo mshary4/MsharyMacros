@@ -39,7 +39,7 @@ import belka.us.androidtoggleswitch.widgets.ToggleSwitch;
  */
 
 public class Datainput extends AppCompatActivity {
-    boolean DoneFat = true;
+    boolean DoneFat = false;
     TextInputLayout layoutFat;
     public static InterstitialAd mInterstitialAd;
     boolean flagch = false;
@@ -47,7 +47,8 @@ public class Datainput extends AppCompatActivity {
     RadioButton radioButtonF, radioButtonM;
     CheckBox checkBoxNonFat;
     ImageView FatPic;
-    TextView per;
+    TextView per, weightTX, ageTX, hightTX;
+    User user = new User();
 
     public static RewardedVideoAd mRewardedVideoAd;
 
@@ -77,8 +78,26 @@ public class Datainput extends AppCompatActivity {
         checkBoxNonFat = (CheckBox) findViewById(R.id.checkBoxnNonFat);
         FatPic = (ImageView) findViewById(R.id.imageView4);
         per = (TextView) findViewById(R.id.textView3);
+        weightTX = (TextView) findViewById(R.id.textView4);
+        ageTX = (TextView) findViewById(R.id.textView5);
+        hightTX = (TextView) findViewById(R.id.textView6);
 
 
+        systemUnit.setOnToggleSwitchChangeListener(new ToggleSwitch.OnToggleSwitchChangeListener() {
+
+            @Override
+            public void onToggleSwitchChangeListener(int position, boolean isChecked) {
+                if (position == 0) {
+                    weightTX.setText("Kg");
+                    hightTX.setText("cm");
+
+
+                } else if (position == 1) {
+                    weightTX.setText("lb");
+                    hightTX.setText("feet");
+                }
+            }
+        });
         checkBoxNonFat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -87,13 +106,12 @@ public class Datainput extends AppCompatActivity {
                     layoutFat.setVisibility(View.INVISIBLE);
                     FatPic.setVisibility(View.INVISIBLE);
                     per.setVisibility(View.INVISIBLE);
-                    DoneFat = false;
+
                 } else if (!isChecked) {
                     editTextBodayfat.setVisibility(View.VISIBLE);
                     layoutFat.setVisibility(View.VISIBLE);
                     FatPic.setVisibility(View.VISIBLE);
                     per.setVisibility(View.VISIBLE);
-                    DoneFat = true;
                 }
             }
         });
@@ -105,7 +123,7 @@ public class Datainput extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                User user = new User();
+
                 flagch = false;
                 if (TextUtils.isEmpty(editTextAge.getText().toString())) {
                     editTextAge.setError(getString(R.string.errorEmpty));
@@ -126,34 +144,50 @@ public class Datainput extends AppCompatActivity {
                     }
                 }
                 if (!radioButtonF.isChecked() && !radioButtonM.isChecked()) {
-                    int c=systemUnit.getCheckedTogglePosition();
-                    Log.e(TAG, "SWICH: "+String.valueOf(c));
+
                     Toast.makeText(Datainput.this, getString(R.string.errorGender), Toast.LENGTH_LONG).show();
                     flagch = true;
                 }
 
                 if (!flagch) {
+
                     if (radioButtonF.isChecked()) {
                         user.setGender("F");
                     } else {
                         user.setGender("M");
                     }
-                    user.setAge(Double.parseDouble(editTextAge.getText().toString()));
+
                     user.setWeight(Double.parseDouble(editTextWeight.getText().toString()));
                     user.setHeight(Double.parseDouble(editTextHight.getText().toString()));
+                    user.setAge(Double.parseDouble(editTextAge.getText().toString()));
+
+                    if (!checkBoxNonFat.isChecked()) {
+                        user.setBodyfat(Double.parseDouble(editTextBodayfat.getText().toString()));
+                    }
+                    RealmManager.getInstance().save(user, User.class);
 
 
-                    if (DoneFat) {
+                    if (systemUnit.getCheckedTogglePosition() == 1) {
+                        user.setWeight(0.45359237 * Double.parseDouble(editTextWeight.getText().toString()));
+                        user.setHeight(30.48 * Double.parseDouble(editTextHight.getText().toString()));
+
+                    } else {
+                        user.setWeight(Double.parseDouble(editTextWeight.getText().toString()));
+                        user.setHeight(Double.parseDouble(editTextHight.getText().toString()));
+
+                    }
+
+
+                    if(!checkBoxNonFat.isChecked()){
+                        DoneFat=true;
                         if (!editTextBodayfat.getText().toString().isEmpty()) {
                             user.setBodyfat(Double.parseDouble(editTextBodayfat.getText().toString()));
                             Intent i = new Intent(Datainput.this, movmentLevel.class);
-                            loadRewardedVideoAd(user);
                             i.putExtra("user", user);
                             startActivity(i);
                         }
                     } else {
                         Intent i = new Intent(Datainput.this, fatinput.class);
-                        loadRewardedVideoAd(user);
                         i.putExtra("user", user);
                         if (radioButtonF.isChecked()) {
                             i.putExtra("G", 'F');
@@ -197,23 +231,32 @@ public class Datainput extends AppCompatActivity {
                     return false;
                 }
 
-                editTextAge.setText(String.valueOf(user.getAge()));
+                editTextAge.setText(String.valueOf((int) user.getAge()));
                 editTextWeight.setText(String.valueOf(user.getWeight()));
-                editTextBodayfat.setText(String.valueOf(user.getBodyfat()));
-                editTextHight.setText(String.valueOf(user.getHeight()));
+                if (user.getBodyfat() > 0) {
+                    checkBoxNonFat.setChecked(false);
+                    editTextBodayfat.setVisibility(View.VISIBLE);
+                    layoutFat.setVisibility(View.VISIBLE);
+                    FatPic.setVisibility(View.VISIBLE);
+                    per.setVisibility(View.VISIBLE);
+                    editTextBodayfat.setText(String.valueOf( user.getBodyfat()));
+                } else {
+                    checkBoxNonFat.setChecked(true);
+                    editTextBodayfat.setVisibility(View.INVISIBLE);
+                    layoutFat.setVisibility(View.INVISIBLE);
+                    FatPic.setVisibility(View.INVISIBLE);
+                    per.setVisibility(View.INVISIBLE);
+                }
 
+                editTextHight.setText(String.valueOf(user.getHeight()));
                 String gender = user.getGender();
-                if (gender.equals("M") || gender.equals("m")) {
+                if (gender.equalsIgnoreCase("M")) {
                     radioButtonM.toggle();
-                } else if (gender.equals("F") || gender.equals("f")) {
+                } else if (gender.equalsIgnoreCase("F")) {
                     radioButtonF.toggle();
                 }
-                editTextBodayfat.setVisibility(View.VISIBLE);
-                layoutFat.setVisibility(View.VISIBLE);
-                FatPic.setVisibility(View.VISIBLE);
-                per.setVisibility(View.VISIBLE);
-                checkBoxNonFat.setChecked(false);
-                DoneFat = true;
+
+
                 return true;
 
             default:
@@ -225,31 +268,10 @@ public class Datainput extends AppCompatActivity {
     }
 
 
-
-
-    private void loadRewardedVideoAd(User user) {
-        int g = 1;
-        if (user.getGender().equals("M") || user.getGender().equals("m")) {
-            g = AdRequest.GENDER_MALE;
-        } else if (user.getGender().equals("F") || user.getGender().equals("f")) {
-            g = AdRequest.GENDER_FEMALE;
-        }
-        //test
-        //ca-app-pub-3940256099942544/5224354917
-        // mine ca-app-pub-8360364255923836/2358165066
-        mRewardedVideoAd.loadAd("ca-app-pub-8360364255923836/2358165066",
-                new AdRequest.Builder().setGender(g).setBirthday(new GregorianCalendar((int) (getYear() - user.getAge()), 1, 1).getTime()).build());
-    }
-
-
     private int getYear() {
         return Calendar.getInstance().get(Calendar.YEAR);
 
     }
-
-
-
-
 
 
 }

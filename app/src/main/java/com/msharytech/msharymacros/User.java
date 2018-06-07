@@ -26,11 +26,19 @@ public class User extends RealmObject implements Serializable {
 
 
     public User() {
-        id="1";
+        id = "1";
     }
 
 
-
+    public User(String id, String gender, double age, double weight, double height, double bodyfat, int activityLevel) {
+        this.id = id;
+        this.gender = gender;
+        this.age = age;
+        this.weight = weight;
+        this.height = height;
+        this.bodyfat = bodyfat;
+        ActivityLevel = activityLevel;
+    }
 
     public User(String gender, double age, double weight, double height, double bodyfat, int activityLevel) {
         this.id = UUID.randomUUID().toString();
@@ -89,6 +97,7 @@ public class User extends RealmObject implements Serializable {
         this.height = height;
     }
 
+
     public void setBodyfat(double bodyfat) {
         this.bodyfat = bodyfat;
     }
@@ -96,42 +105,45 @@ public class User extends RealmObject implements Serializable {
     public double getWeight() {
         return weight;
     }
+
     public double getWeightINlb() {
-        return  weight / 0.45359237;
+        return weight / 0.45359237;
     }
+
     public double getHeight() {
         return height;
     }
+
     public double getBodyfat() {
         return bodyfat;
     }
 
-    public double leanBodyMass(){
-        return weight-(weight*bodyfat/100);
+    public double leanBodyMass() {
+        return weight - (weight * bodyfat / 100);
     }
 
-    public double leanBodyMassINlb(){
-        return getWeightINlb()-(getWeightINlb()*bodyfat/100);
+    public double leanBodyMassINlb() {
+        return getWeightINlb() - (getWeightINlb() * bodyfat / 100);
     }
 
     public double BMR() {
         Double BMR = 0.0;
         if (gender.equals("M") || gender.equals("m")) {
-            BMR= (10 * weight) + (6.25 * height )- (5 * age )+ 5;
+            BMR = (10 * weight) + (6.25 * height) - (5 * age) + 5;
         } else if (gender.equals("F") || gender.equals("f")) {
-            BMR= 10 * weight + 6.25 * height - 5 * age -161;
+            BMR = 10 * weight + 6.25 * height - 5 * age - 161;
         }
         return Math.floor(BMR);
 
     }
 
     public static User getuser() {
-        RealmQuery realmQuery= RealmManager.getInstance().getRealmInstance()
+        RealmQuery realmQuery = RealmManager.getInstance().getRealmInstance()
                 .where(User.class).contains("id", "1");
         try {
-            if(realmQuery!=null)
+            if (realmQuery != null)
                 return (User) realmQuery.findAll().last();
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(App.getContext(), "No data found", Toast.LENGTH_SHORT);
             return null;
         }
@@ -140,6 +152,8 @@ public class User extends RealmObject implements Serializable {
         return null;
 
     }
+
+
 
 
 }

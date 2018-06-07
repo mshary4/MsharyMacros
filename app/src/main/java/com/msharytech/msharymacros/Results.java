@@ -46,7 +46,7 @@ public class Results extends AppCompatActivity {
             user = (User) b.get("user");
 
         }
-        RealmManager.getInstance().save(user,User.class);
+
         Result result = new Calculate().Macros(user);
         total.setText(getString(R.string.YourBodyBurn) + getEmojiByUnicode(0x1F525) + " " + (int) result.getCalBurned() +" "+ getString(R.string.caldAY));
         intake.setText(getString(R.string.YouShoudEat)+" " + getEmojiByUnicode(0x1F957) + " " + (int) result.getIntake() +" "+ getString(R.string.caldAY));

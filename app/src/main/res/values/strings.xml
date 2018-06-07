@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">Macros Calculator</string>
-    <string name="description">this calculator based on research on multiple users with apple watches , this is the most accurate i can get calories your body burn per day and gives calories and macros you have to eat lose weight in right way.</string>
+    <string name="description">this calculator based on research on multiple users with apple watches , this is the most accurate i can get calories your body burn per day and gives calories and macros you have to eat lose weight in right way.
+    \n\n my formula base on following website:\n <url>http://www.acaloriecounter.com/diet/how-many-calories-should-i-eat-per-day-to-lose-weight/</url></string>
     <string name="warning">the result not accurate but this is the range of your macros and calories</string>
     <string name="WelcomeKey">never show this page again</string>
     <string name="Female">Female</string>

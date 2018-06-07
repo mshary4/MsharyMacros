@@ -62,7 +62,6 @@ public class fatinput extends AppCompatActivity {
                 if (!TextUtils.isEmpty(fatPer.getText().toString())) {
                     user.setBodyfat(Double.parseDouble(fatPer.getText().toString()));
                     Intent i = new Intent(fatinput.this, movmentLevel.class);
-                    Log.e("TEST1", fatPer.getText().toString());
                     i.putExtra("user", (Serializable) user);
                     startActivity(i);
                 } else fatPer.setError(getString(R.string.errorEmpty));

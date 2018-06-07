@@ -14,15 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.google.android.gms.ads.MobileAds;
-
 public class ChooserActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chooser);
-        MobileAds.initialize(this, "cca-app-pub-8360364255923836-4430218506");
         Utils.setContext(getApplicationContext());
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);

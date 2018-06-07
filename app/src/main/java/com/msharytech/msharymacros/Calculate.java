@@ -48,9 +48,8 @@ public class Calculate {
 
 
     private double[] protein() {
-        double weight = user.leanBodyMass(); // get user weight
         String gender = user.getGender(); // get user gender
-        if (!isItLb) weight = user.leanBodyMassINlb(); // Convert user Kg in LB
+        double weight = user.leanBodyMassINlb(); // Convert user Kg in LB
         double[] protein = new double[2];
         if (gender.equals("M") || gender.equals("m")) {
             protein[0] = Math.floor(weight * 1.25); // calculate cal for protein

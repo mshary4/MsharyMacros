@@ -24,7 +24,7 @@ import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.msharytech.msharymacros.User;
 
 
-public class movmentLevel extends AppCompatActivity implements RewardedVideoAdListener {
+public class movmentLevel extends AppCompatActivity   {
     User user = new User();
     private RewardedVideoAd mRewardedVideoAd = Datainput.mRewardedVideoAd;
     SharedPreferences.Editor sP = Welcome.EditShared;
@@ -39,7 +39,6 @@ public class movmentLevel extends AppCompatActivity implements RewardedVideoAdLi
         Button buttonDone = (Button) findViewById(R.id.buttonResults);
         SeekBar seekBar = (SeekBar) findViewById(R.id.seekBarActivtyLevel);
         final TextView movmentLevel = (TextView) findViewById(R.id.textViewMovmentLevel);
-        mRewardedVideoAd.setRewardedVideoAdListener(this);
         final TextView ActicityLevelDes = (TextView) findViewById(R.id.textViewActivityDes);
         ActicityLevelDes.setText(getActivityString(1));
         Intent i = getIntent();
@@ -55,8 +54,6 @@ public class movmentLevel extends AppCompatActivity implements RewardedVideoAdLi
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-
-//
             }
 
             @Override
@@ -100,27 +97,9 @@ public class movmentLevel extends AppCompatActivity implements RewardedVideoAdLi
         buttonDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int reward=getReward();
-                if ((getReward() <= 0)) {
-                    if (mRewardedVideoAd.isLoaded()) {
-                        mRewardedVideoAd.show();
-                    }else {
-
-                        sP.putInt("results",--reward);
-                        sP.apply();
-                        Intent i = new Intent(movmentLevel.this, Results.class);
-                        i.putExtra("user", (Serializable) user);
-                        startActivity(i);
-
-                    }
-                } else {
-                    sP.putInt("results",--reward);
-                    sP.apply();
-                    Intent i = new Intent(movmentLevel.this, Results.class);
-                    i.putExtra("user", (Serializable) user);
-                    startActivity(i);
-                }
-
+                Intent i = new Intent(movmentLevel.this, Results.class);
+                i.putExtra("user", (Serializable) user);
+                startActivity(i);
             }
         });
     }
@@ -155,56 +134,5 @@ public class movmentLevel extends AppCompatActivity implements RewardedVideoAdLi
     }
 
 
-    @Override
-    public void onRewardedVideoAdLoaded() {
 
-    }
-
-    @Override
-    public void onRewardedVideoAdOpened() {
-
-    }
-
-    @Override
-    public void onRewardedVideoStarted() {
-
-    }
-
-    @Override
-    public void onRewardedVideoAdClosed() {
-        Intent i = new Intent(movmentLevel.this, Results.class);
-        i.putExtra("user", (Serializable) user);
-        startActivity(i);
-    }
-
-    @Override
-    public void onRewarded(RewardItem rewardItem) {
-        int reward=rewardItem.getAmount();
-        sP.putInt("results", --reward);
-        sP.apply();
-        Intent i = new Intent(movmentLevel.this, Results.class);
-        i.putExtra("user", (Serializable) user);
-        startActivity(i);
-    }
-
-    @Override
-    public void onRewardedVideoAdLeftApplication() {
-        Intent i = new Intent(movmentLevel.this, Results.class);
-        i.putExtra("user", (Serializable) user);
-        startActivity(i);
-    }
-
-    @Override
-    public void onRewardedVideoAdFailedToLoad(int i) {
-
-    }
-
-    @Override
-    public void onRewardedVideoCompleted() {
-
-    }
-
-    public int getReward() {
-        return Welcome.sharedPreferences.getInt("results", 0);
-    }
 }

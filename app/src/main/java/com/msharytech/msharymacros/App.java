@@ -30,16 +30,23 @@ public class App {
     public App() {
     }
 
-    public static boolean isItLB() {
+
+
+    public static boolean isLb() {
         return Lb;
     }
 
+    public static void setLb(boolean lb) {
+        Lb = lb;
+    }
 
     public static boolean isBodyfat() {
         return bodyfat;
     }
 
 
-
+    public boolean isItLB() {
+        return isLb();
     }
+}
 

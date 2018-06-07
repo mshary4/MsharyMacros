@@ -12,10 +12,9 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
         android:layout_marginTop="99dp"
         android:text="@string/description"
-        app:layout_constraintBottom_toTopOf="@+id/imageView8"
+        android:autoLink="web"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
@@ -40,7 +39,7 @@
         android:id="@+id/doneButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="54dp"
+        android:layout_marginBottom="28dp"
         android:text="Done"
         app:layout_constraintBottom_toTopOf="@+id/checkBoxAgian"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -67,22 +66,12 @@
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="0dp"
-        android:layout_height="186dp"
+        android:layout_height="159dp"
+        android:layout_marginEnd="72dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/re_1" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="193dp"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.664"
         app:srcCompat="@drawable/re_2" />
+
 </android.support.constraint.ConstraintLayout>
